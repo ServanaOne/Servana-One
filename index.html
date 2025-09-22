@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servana One - Technology Solutions</title>
+    <meta name="description" content="Hardware, Software, IoT solutions. We build it all with cutting-edge technology and modern design.">
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="image.png">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">Servana One</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Servana One.svg" alt="Logo" class="logo-image">
+                <span class="logo-text">Servana One</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Three.js Background Container -->
+    <div id="three-container"></div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="title-line">Servana</span>
+                        <span class="title-line">One</span>
+                    </h1>
+                    <p class="hero-subtitle">Hardware. Software. IoT. We build it all.</p>
+                    <div class="hero-buttons">
+                        <a href="#services" class="btn btn-primary">
+                            <span>Explore Services</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <span>Get In Touch</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-elements">
+                        <div class="floating-card card-1">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="floating-card card-3">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title">About Servana One</h2>
+                        <p class="section-description">
+                            We are a technology solutions provider specializing in comprehensive 
+                            hardware and software development. From IoT ecosystems to custom 
+                            applications, we deliver innovative solutions that drive business growth.
+                        </p>
+                        <div class="about-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Custom Solutions</h3>
+                                    <p>Tailored technology solutions designed for your specific needs.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Fast Delivery</h3>
+                                    <p>Rapid development cycles without compromising quality.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Reliable Support</h3>
+                                    <p>Ongoing maintenance and support for all our solutions.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-visual">
+                        <div class="tech-display">
+                          
+                            
+                            <!-- Mobile: Tech Circles -->
+                            <div class="tech-circles mobile-only">
+                                <div class="circle-container">
+                                    <div class="tech-circle active">
+                                        <i class="fas fa-microchip"></i>
+                                    </div>
+                                    <div class="connecting-line"></div>
+                                    <div class="tech-circle">
+                                        <i class="fas fa-wifi"></i>
+                                    </div>
+                                    <div class="connecting-line"></div>
+                                    <div class="tech-circle active">
+                                        <i class="fas fa-rocket"></i>
+                                    </div>
+                                </div>
+                                <div class="pulse-rings">
+                                    <div class="pulse-ring"></div>
+                                    <div class="pulse-ring"></div>
+                                    <div class="pulse-ring"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Our Services</h2>
+                    <p class="section-description">
+                        Comprehensive technology solutions for modern businesses
+                    </p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3 class="service-title">Hardware Development</h3>
+                        <p class="service-description">
+                         End-to-End Custom Hardware Design & Prototyping PCB Development to Full Embedded Systems
+                           
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">PCB Design</span>
+                            <span class="feature-tag">Embedded Systems</span>
+                            <span class="feature-tag">Prototyping</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="service-title">Software Solutions</h3>
+                        <p class="service-description">
+                            Full-stack software development including web applications, 
+                            mobile apps, and desktop solutions.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">Web Apps</span>
+                            <span class="feature-tag">Mobile Apps</span>
+                            <span class="feature-tag">APIs</span>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 class="service-title">IoT Ecosystems</h3>
+                        <p class="service-description">
+                            Complete IoT solutions connecting devices, data, and insights
+                            for smart automation and monitoring.
+                        </p>
+                        <div class="service-features">
+                            <span class="feature-tag">Device Integration</span>
+                            <span class="feature-tag">Cloud Platforms</span>
+                            <span class="feature-tag">Analytics</span>
+                        </div>
+                    </div>
+
+                   
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h2 class="section-title">Contact Us</h2>
+                        <p class="section-description">
+                            Ready to bring your technology vision to life? 
+                            Let's discuss your project and explore the possibilities.
+                        </p>
+                        <div class="contact-methods">
+                            <a href="mailto:oneservana@gmail.com" class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h3>Email</h3>
+                                    <p>hello@servanaone.com</p>
+                                </div>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/servana-one-280428385/" class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fab fa-linkedin"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h3>LinkedIn</h3>
+                                    <p>Professional Network</p>
+                                </div>
+                            </a>
+
+                            <a href="https://www.instagram.com/servanaone" class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h3>Instagram</h3>
+                                    <p>Latest Updates</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-visual">
+                        <div class="contact-card">
+                            <div class="card-header">
+                                <div class="card-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="code-line">
+                                    <span class="code-keyword">const</span>
+                                    <span class="code-variable">project</span>
+                                    <span class="code-operator">=</span>
+                                    <span class="code-string">"amazing"</span>
+                                </div>
+                                <div class="code-line">
+                                    <span class="code-keyword">function</span>
+                                    <span class="code-function">buildSolution</span>
+                                    <span class="code-bracket">()</span>
+                                    <span class="code-bracket">{</span>
+                                </div>
+                                <div class="code-line indent">
+                                    <span class="code-keyword">return</span>
+                                    <span class="code-string">"success"</span>
+                                </div>
+                                <div class="code-line">
+                                    <span class="code-bracket">}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span class="footer-logo">Servana One</span>
+                    <p>Building the future, one solution at a time.</p>
+                </div>
+                <div class="footer-right">
+                    <p>&copy; 2025 Servana One. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
