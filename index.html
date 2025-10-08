@@ -14,7 +14,70 @@
     
     <!-- Custom Styles -->
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="https://github.com/ServanaOne/Servana-One/blob/main/image.png">
+    <link rel="icon" type="image/x-icon" href="Servana One.svg">
+    
+    <!-- Security Protection -->
+    <style>
+        /* Anti-copy protection styles */
+        * {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-touch-callout: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+        }
+        
+        input, textarea {
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            user-select: text !important;
+        }
+        
+        /* Prevent image dragging and context menu */
+        img {
+            -webkit-user-drag: none !important;
+            -khtml-user-drag: none !important;
+            -moz-user-drag: none !important;
+            -o-user-drag: none !important;
+            user-drag: none !important;
+            pointer-events: none !important;
+        }
+        
+        /* Hide scrollbars to prevent copy via scrolling */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+        
+        /* Disable text highlighting */
+        ::selection {
+            background: transparent;
+        }
+        ::-moz-selection {
+            background: transparent;
+        }
+        
+        /* Prevent printing */
+        @media print {
+            * {
+                display: none !important;
+            }
+            body::before {
+                content: "Printing is disabled for security reasons";
+                display: block !important;
+                font-size: 24px;
+                text-align: center;
+                margin-top: 50px;
+                color: red;
+            }
+        }
+    </style>
+    
+    <!-- Load security script first -->
+    <script src="security.js"></script>
+    <script src="protection.min.js"></script>
 </head>
 <body>
     <!-- Loading Screen -->
@@ -320,5 +383,4 @@
     <!-- Custom JavaScript -->
     <script src="script.js"></script>
 </body>
-
 </html>
