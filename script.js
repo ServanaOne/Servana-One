@@ -12,6 +12,9 @@ const animationState = {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Fix mobile viewport height issues
+    setMobileViewportHeight();
+    
     initThreeJS();
     initAnimations();
     initNavigation();
@@ -19,33 +22,72 @@ document.addEventListener('DOMContentLoaded', function() {
     hideLoadingScreen();
 });
 
+// Fix mobile viewport height (especially for iOS Safari)
+function setMobileViewportHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    
+    // Update on resize
+    window.addEventListener('resize', () => {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    });
+}
+
 // Three.js IoT Tech Background
 function initThreeJS() {
     // Scene setup
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
-    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    
+    // Mobile-optimized renderer settings
+    const isMobile = window.innerWidth <= 768;
+    renderer = new THREE.WebGLRenderer({ 
+        alpha: true, 
+        antialias: !isMobile, // Disable antialiasing on mobile for performance
+        powerPreference: isMobile ? "low-power" : "high-performance"
+    });
     
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0x000000, 0);
-    document.getElementById('three-container').appendChild(renderer.domElement);
     
-    // Create IoT-themed elements
-    createCircuitBoard();
-    createDataConnections();
-    createIoTNodes();
+    // Set appropriate pixel ratio for mobile
+    if (isMobile) {
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    } else {
+        renderer.setPixelRatio(window.devicePixelRatio);
+    }
     
-    camera.position.z = 500;
+    const container = document.getElementById('three-container');
+    if (container) {
+        container.appendChild(renderer.domElement);
+    }
     
-    // Mouse interaction
+    // Create IoT-themed elements (reduce complexity on mobile)
+    if (isMobile) {
+        createCircuitBoard(15); // Fewer elements on mobile
+        createDataConnections(8);
+        createIoTNodes(6);
+    } else {
+        createCircuitBoard();
+        createDataConnections();
+        createIoTNodes();
+    }
+    
+    camera.position.z = isMobile ? 300 : 500; // Closer camera on mobile
+    
+    // Mouse/touch interaction
     document.addEventListener('mousemove', onDocumentMouseMove, false);
+    document.addEventListener('touchmove', onDocumentTouchMove, false);
+    
+    // Add window resize listener
+    window.addEventListener('resize', onWindowResize, false);
     
     animate();
 }
 
-function createCircuitBoard() {
+function createCircuitBoard(traceCount = 25) {
     // Create circuit board traces
-    const traceCount = 25;
     
     for (let i = 0; i < traceCount; i++) {
         const points = [];
@@ -95,8 +137,7 @@ function createCircuitBoard() {
     }
 }
 
-function createDataConnections() {
-    const connectionCount = 15;
+function createDataConnections(connectionCount = 15) {
     
     for (let i = 0; i < connectionCount; i++) {
         const points = [];
@@ -145,8 +186,7 @@ function createDataConnections() {
     }
 }
 
-function createIoTNodes() {
-    const nodeCount = 12;
+function createIoTNodes(nodeCount = 12) {
     
     for (let i = 0; i < nodeCount; i++) {
         // Create different types of IoT device representations
@@ -203,6 +243,14 @@ function onDocumentMouseMove(event) {
     mouseY = event.clientY - windowHalfY;
 }
 
+function onDocumentTouchMove(event) {
+    if (event.touches.length === 1) {
+        event.preventDefault();
+        mouseX = event.touches[0].pageX - windowHalfX;
+        mouseY = event.touches[0].pageY - windowHalfY;
+    }
+}
+
 function onWindowResize() {
     windowHalfX = window.innerWidth / 2;
     windowHalfY = window.innerHeight / 2;
@@ -216,6 +264,13 @@ function onWindowResize() {
     // Check if renderer is initialized before accessing it
     if (renderer) {
         renderer.setSize(window.innerWidth, window.innerHeight);
+        
+        // Mobile-specific adjustments
+        if (window.innerWidth <= 768) {
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit pixel ratio for performance
+        } else {
+            renderer.setPixelRatio(window.devicePixelRatio);
+        }
     }
 }
 
